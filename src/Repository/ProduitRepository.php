@@ -36,13 +36,12 @@ class ProduitRepository extends ServiceEntityRepository {
      */
 
 
-    public function findOneBySomePrice($value): ?Produit {
+    public function findAllWithCategory(): ?Produit {
 
         return $this->createQueryBuilder('p')
-                        ->andWhere('p.prix = :val')
-                        ->setParameter('val', $value)
+                        ->join('p.categorie')
                         ->getQuery()
-                        ->getOneOrNullResult()
+                        ->getResult()
         ;
     }
 

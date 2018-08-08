@@ -13,6 +13,7 @@
                 <th>Nom produit</th>
                 <th>Prix</th>
                 <th>Image produit</th>
+                <th>Catégorie</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
                 <td>{{ console.nom }}</td>
                 <td>{{ console.prix|number_format(2,'.',' ') }} €</td>
                 <td>{{ console.image }}</td>
+                <td>{{ console.category.nom }}</td>
             </tr>
             {% endfor %}
         </tbody>

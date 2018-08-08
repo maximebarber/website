@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Produit
 {
+    
+    //Permet de créer une liaison entre la table produit et la table category
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="produits")
      */
@@ -36,6 +38,11 @@ class Produit
      */
     private $image;
 
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    
     public function getId()
     {
         return $this->id;
@@ -73,6 +80,13 @@ class Produit
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
