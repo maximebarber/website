@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <!-- table>(thead>tr>th*3)>(tbody>tr>td*3) -->
+    <table>
+        <thead>
+            <tr>
+                <th>Nom produit</th>
+                <th>Prix</th>
+                <th>Image produit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ console.nom }}</td>
+                <td>{{ console.prix }}</td>
+                <td>{{ console.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
+
+
