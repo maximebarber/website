@@ -7,7 +7,7 @@
     {{ dump(consoles) }}
     
     <!-- table>(thead>tr>th*3)>(tbody>tr>td*3) -->
-    <table>
+    <table border="3px solid black">
         <thead>
             <tr>
                 <th>Nom produit</th>
@@ -19,7 +19,7 @@
             {% for console in consoles %}
             <tr>
                 <td>{{ console.nom }}</td>
-                <td>{{ console.prix }}</td>
+                <td>{{ console.prix|number_format(2,'.',' ') }} €</td>
                 <td>{{ console.image }}</td>
             </tr>
             {% endfor %}

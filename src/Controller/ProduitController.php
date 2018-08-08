@@ -11,18 +11,16 @@ class ProduitController extends Controller {
     /**
      * @Route("/", name="produit")
      */
-    
     public function index() {
 
-        $repo    = $this->getDoctrine()
-                        ->getRepository(Produit::class);
-        
+        $repo = $this->getDoctrine()
+                ->getRepository(Produit::class);
+
         $consoles = $repo->findAll();
 
         return $this->render('produit/index.html.twig', [
                     "consoles" => $consoles
         ]);
-        
     }
 
 }

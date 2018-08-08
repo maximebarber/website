@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Produit
 {
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="produits")
+     */
+    private $category;
+    
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
