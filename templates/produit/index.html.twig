@@ -4,6 +4,8 @@
 
 {% block body %}
 
+    {{ dump(consoles) }}
+    
     <!-- table>(thead>tr>th*3)>(tbody>tr>td*3) -->
     <table>
         <thead>
@@ -14,11 +16,13 @@
             </tr>
         </thead>
         <tbody>
+            {% for console in consoles %}
             <tr>
                 <td>{{ console.nom }}</td>
                 <td>{{ console.prix }}</td>
                 <td>{{ console.image }}</td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 
