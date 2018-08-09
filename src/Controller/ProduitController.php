@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ProduitController extends Controller {
 
     /**
-     * @Route("/", name="produit")
+     * @Route("/", name="produits")
      */
     public function index() {
 
@@ -24,7 +24,7 @@ class ProduitController extends Controller {
     }
 
     /**
-     * @Route("/{id}")
+     * @Route("/{id}", name="produit")
      */
     public function afficher($id) {
 
@@ -33,8 +33,17 @@ class ProduitController extends Controller {
 
         $console = $repo->find($id);
 
-        return $this->render('produit/afficher.html.twig', [
-                    "console" => $console]);
+        if (!$console) {
+
+            $this->get('session')->getFlashBag()->add(
+                    'Erreur', 'Le produit demandé n\'existe pas'
+            );
+
+            return $this->redirectToRoute("produits");
+        } else {
+            return $this->render('produit/afficher.html.twig', [
+                        "console" => $console]);
+        }
     }
 
 }

@@ -6,6 +6,13 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        
+        <div class="erreurs">
+           {% for message in app.flashes('Erreur') %} 
+               <mark>Fatal error : {{ message }}</mark>
+           {% endfor %} 
+        </div>
+        
         {% block body %}
         {% endblock %}
         {% block javascripts %}{% endblock %}

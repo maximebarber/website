@@ -14,6 +14,10 @@
     
     <p>{{ console.prix|number_format(2,'.',' ') }} €</p>
     <p><img src="{{ console.image }}"></p>
+    
+    <a href="{{ path("produits") }}">Retour vers le futur</a>
+    
+    {{ dump(app.request) }}
 
 {% endblock %}
 

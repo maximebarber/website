@@ -5,7 +5,7 @@
 {% block body %}
 
     {{ dump(consoles) }}
-    
+
     <!-- table>(thead>tr>th*3)>(tbody>tr>td*3) -->
     <table border="3px solid black">
         <thead>
@@ -18,12 +18,14 @@
         </thead>
         <tbody>
             {% for console in consoles %}
-            <tr>
-                <td>{{ console.nom }}</td>
-                <td>{{ console.prix|number_format(2,'.',' ') }} €</td>
-                <td>{{ console.image }}</td>
-                <td>{{ console.category.nom }}</td>
-            </tr>
+                <tr>
+                    <td>
+                        <a href="{{ path("produit", {"id": console.id}) }}">{{ console.nom }}</a>
+                    </td>
+                    <td>{{ console.prix|number_format(2,'.',' ') }} €</td>
+                    <td><img src="{{ console.image }}" style="width:150px;"></td>
+                    <td>{{ console.category.nom }}</td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
