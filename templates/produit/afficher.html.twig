@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    {{ dump(console) }}
+    
+    <h2>
+        {{ console.nom }} - 
+        <em>{{ console.category.nom }}</em>
+    </h2>
+    
+    <p>{{ console.prix }}</p>
+    <p><img src="{{ console.image }}"></p>
+
+{% endblock %}
+
+

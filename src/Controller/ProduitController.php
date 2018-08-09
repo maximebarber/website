@@ -23,4 +23,18 @@ class ProduitController extends Controller {
         ]);
     }
 
+    /**
+     * @Route("/{id}")
+     */
+    public function afficher($id) {
+
+        $repo = $this->getDoctrine()
+                ->getRepository(Produit::class);
+
+        $console = $repo->find($id);
+
+        return $this->render('produit/afficher.html.twig', [
+                    "console" => $console]);
+    }
+
 }
