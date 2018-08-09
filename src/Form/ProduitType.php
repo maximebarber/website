@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Entity\Produit;
 
 class ProduitType extends AbstractType
 {
@@ -17,10 +18,10 @@ class ProduitType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('prix', MoneyType::class, array(
-                'divisor' => 100, 'currency' => '€'
+                'currency' => '€'
             ))
             ->add('image', TextType::class)
-            ->add('categorie', EntityType::class, array(
+            ->add('category', EntityType::class, array(
                 'class' => Category::class,
                 'choice_label' => 'nom'
             ))
@@ -30,7 +31,7 @@ class ProduitType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            "data_class"=> Produit::class
         ]);
     }
 }

@@ -6,13 +6,14 @@ use App\Entity\Produit;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Form\ProduitType;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProduitController extends Controller {
 
     /**
      * @Route("/", name="produits")
      */
-    public function index() {
+    public function index(Request $request) {
 
         $repo = $this->getDoctrine()
                 ->getRepository(Produit::class);
@@ -20,6 +21,18 @@ class ProduitController extends Controller {
         $consoles = $repo->findAll();
         
         $form = $this->createForm(ProduitType::class);
+        $form->handleRequest($request);
+
+        //$em = entity manager
+        //Ajout form à la BDD
+        if ($form->isSubmitted() && $form->isValid()){
+            
+            $em = $this->getDoctrine()->getEntityManager();
+            $produit = $form->getData();
+            $em->persist($produit);
+            $em->flush();
+
+        }
 
         return $this->render('produit/index.html.twig', [
                     "consoles" => $consoles,
