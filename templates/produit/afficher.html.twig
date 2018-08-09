@@ -5,13 +5,14 @@
 {% block body %}
 
     {{ dump(console) }}
+    {{ dump(console.category) }}
     
     <h2>
         {{ console.nom }} - 
         <em>{{ console.category.nom }}</em>
     </h2>
     
-    <p>{{ console.prix }}</p>
+    <p>{{ console.prix|number_format(2,'.',' ') }} €</p>
     <p><img src="{{ console.image }}"></p>
 
 {% endblock %}
