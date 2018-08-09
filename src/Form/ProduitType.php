@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Form\App\Entity;
+namespace App\Form;
 
-use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,17 +11,14 @@ class ProduitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('prix')
-            ->add('image')
-            ->add('category')
+            ->add('field_name')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Produit::class,
+            // Configure your form options here
         ]);
     }
 }
