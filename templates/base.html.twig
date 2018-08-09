@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        <!-- CSS Materialize -->
+        {# <link rel="stylesheet" href="{{asset('build/css/materialize.css')}}"> #}
 
         <!-- CSS Bootstrap -->
         <link rel="stylesheet" href="{{asset('build/css/bootstrap.css')}}">
@@ -23,6 +26,8 @@
         {% block body %}
         {% endblock %}
         {% block javascripts %}
+            <!-- JS materialize -->
+            {# <script src="{{asset('build/js/materialize.js')}}"></script> #}
             <!-- JS Jquery -->
             <script src="{{asset('build/js/jquery-3.3.1.min.js')}}"></script>
             <!-- JS Bootstrap -->

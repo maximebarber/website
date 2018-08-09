@@ -30,6 +30,13 @@
         </tbody>
     </table>
 
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="button" class="btn btn-outline-dark">Ajouter</button>
+    {{ form_end(form) }}
+    
+    {{ dump(form) }}
+
 {% endblock %}
 
 

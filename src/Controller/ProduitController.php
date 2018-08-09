@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Produit;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Form\ProduitType;
 
 class ProduitController extends Controller {
 
@@ -17,9 +18,12 @@ class ProduitController extends Controller {
                 ->getRepository(Produit::class);
 
         $consoles = $repo->findAll();
+        
+        $form = $this->createForm(ProduitType::class);
 
         return $this->render('produit/index.html.twig', [
-                    "consoles" => $consoles
+                    "consoles" => $consoles,
+                    "form" => $form->createView()
         ]);
     }
 
