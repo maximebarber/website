@@ -13,7 +13,7 @@
     </h2>
     
     <p>{{ console.prix|number_format(2,'.',' ') }} €</p>
-    <p><img src="{{ console.image }}"></p>
+    <p><img src="{{ asset("build/images/"~console.image) }}"></p>
     
     <a href="{{ path("produits") }}">Retour vers le futur</a>
     

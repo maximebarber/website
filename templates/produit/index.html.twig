@@ -23,7 +23,7 @@
                         <a href="{{ path("produit", {"id": console.id}) }}">{{ console.nom }}</a>
                     </td>
                     <td>{{ console.prix|number_format(2,'.',' ') }} €</td>
-                    <td><img src="{{ console.image }}" style="width:150px"></td>
+                    <td><img src="{{ asset("build/images/"~console.image) }}" style="width:150px"></td>
                     <td>{{ console.category.nom }}</td>
                 </tr>
             {% endfor %}

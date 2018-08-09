@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/website/src/Repository/ProduitRepository.php</file>
+            <file>file:/C:/wamp/www/website/templates/produit/afficher.html.twig</file>
             <file>file:/C:/wamp/www/website/src/Entity/Produit.php</file>
+            <file>file:/C:/wamp/www/website/webpack.config.js</file>
             <file>file:/C:/wamp/www/website/src/Controller/ProduitController.php</file>
+            <file>file:/C:/wamp/www/website/templates/base.html.twig</file>
+            <file>file:/C:/wamp/www/website/assets/css/app.css</file>
             <file>file:/C:/wamp/www/website/src/Entity/Category.php</file>
+            <file>file:/C:/wamp/www/website/assets/js/app.js</file>
             <file>file:/C:/wamp/www/website/templates/produit/index.html.twig</file>
         </group>
     </open-files>
