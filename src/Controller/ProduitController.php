@@ -8,50 +8,56 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Form\ProduitType;
 use Symfony\Component\HttpFoundation\Request;
 
-class ProduitController extends Controller {
+class ProduitController extends Controller
+{
 
     /**
      * @Route("/", name="produits")
      */
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
 
         $repo = $this->getDoctrine()
-                ->getRepository(Produit::class);
+            ->getRepository(Produit::class);
 
         $consoles = $repo->findAll();
 
         return $this->render('produit/index.html.twig', [
-                    "consoles" => $consoles
+            "consoles" => $consoles
         ]);
     }
 
     /**
      * @Route("/{id}", name="produit")
      */
-    public function afficher($id) {
+    public function afficher($id)
+    {
 
         $repo = $this->getDoctrine()
-                ->getRepository(Produit::class);
+            ->getRepository(Produit::class);
 
         $console = $repo->find($id);
 
-        if (!$console) {
+        if ($console === null) {
 
             $this->get('session')->getFlashBag()->add(
-                    'Erreur', 'Le produit demandé n\'existe pas'
+                'Erreur',
+                'Le produit demandé n\'existe pas'
             );
 
             return $this->redirectToRoute("produits");
         } else {
             return $this->render('produit/afficher.html.twig', [
-                        "console" => $console]);
+                "console" => $console
+            ]);
         }
     }
 
     /**
      * @Route("/ajouter", name="ajouter_produit")
      */
-    public function ajouter() {
+    public function ajouter()
+    {
 
         $form = $this->createForm(ProduitType::class);
         $form->handleRequest($request);
@@ -60,13 +66,13 @@ class ProduitController extends Controller {
         //Ajout form à la BDD
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $em      = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getEntityManager();
             $produit = $form->getData();
             $em->persist($produit);
             $em->flush();
         }
         return $this->render('produit/index.html.twig', [
-                    "form" => $form->createView()
+            "form" => $form->createView()
         ]);
     }
 

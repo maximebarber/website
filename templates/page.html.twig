@@ -1,0 +1,16 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}  
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset("autre.css") }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    {% for cle, valeur in resultat %}
+        j'affiche {{ cle }} où y a la valeur {{ valeur }}<br>
+    {% endfor %}
+    
+{% endblock %}
