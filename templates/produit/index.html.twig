@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {{ dump(consoles) }}
+    <a class="button" href="{{ path("ajouter_produit") }}">Ajouter</a>
 
     <!-- table>(thead>tr>th*3)>(tbody>tr>td*3) -->
     <table class="table">
@@ -29,13 +29,6 @@
             {% endfor %}
         </tbody>
     </table>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn btn-outline-dark">Ajouter</button>
-    {{ form_end(form) }}
-    
-    {{ dump(form) }}
 
 {% endblock %}
 

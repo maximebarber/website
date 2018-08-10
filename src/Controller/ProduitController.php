@@ -19,24 +19,9 @@ class ProduitController extends Controller {
                 ->getRepository(Produit::class);
 
         $consoles = $repo->findAll();
-        
-        $form = $this->createForm(ProduitType::class);
-        $form->handleRequest($request);
-
-        //$em = entity manager
-        //Ajout form à la BDD
-        if ($form->isSubmitted() && $form->isValid()){
-            
-            $em = $this->getDoctrine()->getEntityManager();
-            $produit = $form->getData();
-            $em->persist($produit);
-            $em->flush();
-
-        }
 
         return $this->render('produit/index.html.twig', [
-                    "consoles" => $consoles,
-                    "form" => $form->createView()
+                    "consoles" => $consoles
         ]);
     }
 
@@ -61,6 +46,28 @@ class ProduitController extends Controller {
             return $this->render('produit/afficher.html.twig', [
                         "console" => $console]);
         }
+    }
+
+    /**
+     * @Route("/ajouter", name="ajouter_produit")
+     */
+    public function ajouter() {
+
+        $form = $this->createForm(ProduitType::class);
+        $form->handleRequest($request);
+
+        //$em = entity manager
+        //Ajout form à la BDD
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em      = $this->getDoctrine()->getEntityManager();
+            $produit = $form->getData();
+            $em->persist($produit);
+            $em->flush();
+        }
+        return $this->render('produit/index.html.twig', [
+                    "form" => $form->createView()
+        ]);
     }
 
 }
